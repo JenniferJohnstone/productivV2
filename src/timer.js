@@ -14,6 +14,7 @@ import Heading from './heading'
 import backgrounds from './backgrounds'
 
 const Timer = ({ expiryTimestamp }) => {
+    //used to change color scheme
     const [state, setState] = useState(backgrounds.orange)
 
     // sounds
@@ -21,6 +22,7 @@ const Timer = ({ expiryTimestamp }) => {
     const [play2] = useSound(buttonClick2)
     const [play3] = useSound(finish)
 
+    //the timer functions
     const {
         seconds,
         minutes,
@@ -35,12 +37,15 @@ const Timer = ({ expiryTimestamp }) => {
         }
     });
 
+    //sets a new time on the timer
     function changeTime(value) {
         const time = new Date();
         time.setSeconds(time.getSeconds() + value);
         restart(time)
         pause()
     }
+
+    //formats the time into 00:00
 
     const formatTime = {
         min: minutes.toLocaleString('en-US', {
@@ -53,6 +58,7 @@ const Timer = ({ expiryTimestamp }) => {
         })
     }
 
+    //request notification permission
     function requestPermission() {
         if (Notification.permission !== 'granted') {
             Notification.requestPermission()
