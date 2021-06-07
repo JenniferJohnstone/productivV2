@@ -2,12 +2,21 @@ import * as React from 'react'
 import { useState } from 'react'
 import { useTimer } from 'react-timer-hook';
 import "@fontsource/montserrat"
+import useSound from 'use-sound'
+import buttonClick from './sounds/buttonClick.mp3'
+import buttonClick2 from './sounds/buttonClick2.mp3'
+import finish from './sounds/finishSound.mp3'
 
 import Heading from './heading'
 import backgrounds from './backgrounds'
 
 const Timer = ({ expiryTimestamp }) => {
     const [state, setState] = useState(backgrounds.orange)
+
+    // sounds
+    const [play] = useSound(buttonClick)
+    const [play2] = useSound(buttonClick2)
+    const [play3] = useSound(finish)
 
     const {
         seconds,
@@ -16,7 +25,12 @@ const Timer = ({ expiryTimestamp }) => {
         pause,
         restart,
         isRunning,
-    } = useTimer({ expiryTimestamp, onExpire: () => console.warn('onExpire called') });
+    } = useTimer({
+        expiryTimestamp, onExpire: () => {
+            play3()
+            var notification = new Notification("Time's up!");
+        }
+    });
 
     function changeTime(value) {
         const time = new Date();
@@ -34,6 +48,12 @@ const Timer = ({ expiryTimestamp }) => {
             minimumIntegerDigits: 2,
             useGrouping: false
         })
+    }
+
+    function requestPermission() {
+        if (Notification.permission !== 'granted') {
+            Notification.requestPermission()
+        }
     }
 
     return (
@@ -63,8 +83,15 @@ const Timer = ({ expiryTimestamp }) => {
 
                     {
                         isRunning
-                            ? <button className="btn-lg btn-light" onClick={pause}>Pause</button>
-                            : <button className="btn-lg btn-light" onClick={start}>Start</button>
+                            ? <button className="btn-lg btn-light" onClick={() => {
+                                play2()
+                                pause()
+                            }}>Pause</button>
+                            : <button className="btn-lg btn-light" onClick={() => {
+                                requestPermission()
+                                start()
+                                play()
+                            }}>Start</button>
                     }
 
                 </div>
@@ -75,7 +102,7 @@ const Timer = ({ expiryTimestamp }) => {
                         that helps you stay focused for longer.</p>
                         <h3 style={{ color: state.accent, fontFamily: 'monsterrat' }}>The pomodoro Technique</h3>
                         <p style={{ fontFamily: 'monsterrat' }}>The Pomodoro Technique is a method of time management developed
-                        in the 1980s by Francesco Cirillo. It has since been found that it's use of brief diversions and short
+                        in the 1980s by Francesco Cirillo. It has since been scientically proven that it's use of brief diversions and short
                         term rewards work perfectly to maintain focus and motivation over long periods of work. </p>
                         <h3 style={{ color: state.accent, fontFamily: 'monsterrat' }}>How to use the timer</h3>
                         <ol style={{ listStylePosition: 'inside', margin: 0, padding: 0 }}>
@@ -87,8 +114,6 @@ const Timer = ({ expiryTimestamp }) => {
                         </ol>
                     </div>
                 </div>
-
-
             </div>
 
 
