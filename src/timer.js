@@ -25,9 +25,21 @@ const Timer = ({ expiryTimestamp }) => {
         pause()
     }
 
+    const formatTime = {
+        min: minutes.toLocaleString('en-US', {
+            minimumIntegerDigits: 2,
+            useGrouping: false
+        }),
+        sec: seconds.toLocaleString('en-US', {
+            minimumIntegerDigits: 2,
+            useGrouping: false
+        })
+    }
+
     return (
 
         <>
+
             <Heading color={state.accent} />
 
             <div className="row text-center mt-1 flex-fill" style={state.background}>
@@ -47,7 +59,7 @@ const Timer = ({ expiryTimestamp }) => {
                         changeTime(900)
                     }}>Long break</button>
 
-                    <h1 style={{ fontSize: '500%', color: 'white' }}>{minutes} : {seconds}</h1>
+                    <h1 style={{ fontSize: '500%', color: 'white' }}>{formatTime.min} : {formatTime.sec}</h1>
 
                     {
                         isRunning

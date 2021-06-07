@@ -1,5 +1,7 @@
 import * as React from "react"
 import Timer from '../timer'
+import { Helmet } from "react-helmet"
+
 
 const IndexPage = () => {
 
@@ -7,7 +9,7 @@ const IndexPage = () => {
   const time = new Date();
   time.setSeconds(time.getSeconds() + 1500);
 
-
+  const title = '<title>Productiv</title>'
   return (
 
     <>
@@ -22,11 +24,22 @@ const IndexPage = () => {
         integrity="undefined"
         crossorigin="anonymous"></script>
 
+      <Helmet>
+        <title>Productiv</title>
+        <meta name="description" content="A timer inspired by the Pomodoro technique, Productiv will help you stay focused for longer." />
+        <meta name="keywords" cpntent="pomodoro, productivity, timer, focus,  technique" />
+        <style type="text/css">{`
+        body {
+          overflow-x: hidden;
+        }
+    `}</style>
+      </Helmet>
+
+
 
       <main>
 
         <div className='d-flex flex-column justify-content-center' >
-          <title>Productiv</title>
           <Timer expiryTimestamp={time} />
         </div>
       </main>
