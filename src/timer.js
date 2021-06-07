@@ -69,7 +69,7 @@ const Timer = ({ expiryTimestamp }) => {
 
                 </div>
                 <div className="row mx-auto mb-3 mt-4 justify-content-center" >
-                    <div className="col-lg-8 pt-4 p-3 mx-auto" style={{ backgroundColor: 'white', backgroundColor: '#ffffff7a' }}>
+                    <div className="col-lg-8 pt-4 p-3 mx-auto" style={{ background: 'rgb(249, 249,249)', background: 'rgba(249, 249, 249, 0.5)' }}>
                         <h3 style={{ color: state.accent, fontFamily: 'monsterrat' }}>What is Productiv?</h3>
                         <p style={{ fontFamily: 'monsterrat' }}>Productiv is an online <span style={{ color: state.accent }}>pomodoro timer </span>
                         that helps you stay focused for longer.</p>
