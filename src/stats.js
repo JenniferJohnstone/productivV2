@@ -2,6 +2,9 @@ import React from 'react'
 
 const Stats = () => {
 
+    var pomoCount = sessionStorage.getItem('pomoCount')
+
+
     return (
         <div class="d-flex flex-row">
             <div class='col-3 mt-3 p-2'>
@@ -12,7 +15,7 @@ const Stats = () => {
                 <h2>Today</h2>
             </div>
             <div class='col-9 mt-3 p-2'>
-                <p>~ Work in progress ~</p>
+                <p>{pomoCount}</p>
             </div>
 
 
