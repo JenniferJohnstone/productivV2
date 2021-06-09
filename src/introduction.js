@@ -2,6 +2,7 @@ import "@fontsource/montserrat"
 import React from 'react'
 import { useState } from 'react'
 
+import Stats from './stats'
 import About from './about'
 
 const Introduction = ({ accent }) => {
@@ -28,10 +29,11 @@ const Introduction = ({ accent }) => {
                 <li style={viewStats ? tabStyle : { cursor: 'pointer' }}>
                     <a style={viewStats ? inActive : { color: 'white' }} class="nav-link" onClick={() => setView(true)}>My Stats</a>
                 </li>
+
             </ul>
             <div className="p-0" style={{ background: 'rgb(249, 249,249)', background: 'rgba(249, 249, 249, 0.5)' }}>
 
-                {viewStats ? <h1>Hello I am some stats</h1> : <About accent={accent} />}
+                {viewStats ? <Stats /> : <About accent={accent} />}
 
 
             </div>

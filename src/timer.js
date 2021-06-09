@@ -12,8 +12,10 @@ import Introduction from './introduction'
 import Buttons from './buttons'
 import Heading from './heading'
 import backgrounds from './backgrounds'
+import addPomo from './addPomo'
 
 const Timer = ({ expiryTimestamp }) => {
+
     //used to change color scheme
     const [state, setState] = useState(backgrounds.orange)
 
@@ -33,7 +35,23 @@ const Timer = ({ expiryTimestamp }) => {
     } = useTimer({
         expiryTimestamp, onExpire: () => {
             play3()
-            var notification = new Notification("Time's up!");
+            //if pomodoro completed 
+            if (state == backgrounds.orange) {
+                addPomo()
+                if (sessionStorage.getItem('pomoCount') % 4 == 0) {
+                    setState(backgrounds.blue)
+                    changeTime(900)
+                    new Notification("Congrats you've finished a pomodoro! Time for a long break, you've earned it.")
+                } else {
+                    setState(backgrounds.purple)
+                    changeTime(300)
+                    new Notification("Time to take a break!")
+                }
+            } else {
+                setState(backgrounds.orange)
+                changeTime(1500)
+                var notification = new Notification("Time to work!");
+            }
         }
     });
 

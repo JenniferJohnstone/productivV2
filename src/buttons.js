@@ -4,7 +4,6 @@ import backgrounds from './backgrounds'
 
 
 const buttons = ({ state, setState, changeTime }) => {
-    console.log(state)
     return (
         <>
             {/* Buttons to set the times */}
