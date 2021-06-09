@@ -4,6 +4,23 @@ const Stats = () => {
 
     var pomoCount = sessionStorage.getItem('pomoCount')
 
+    const Message = () => {
+        if (pomoCount == null) {
+            return (
+                <>0 pomodoros</>
+            )
+        }
+        if (pomoCount > 1) {
+            return (
+                <>{pomoCount} pomodoros</>
+            )
+        } else {
+            return (
+                <>{pomoCount} pomodoro</>
+            )
+        }
+    }
+
 
     return (
         <div class="d-flex flex-row">
@@ -15,7 +32,7 @@ const Stats = () => {
                 <h2>Today</h2>
             </div>
             <div class='col-9 mt-3 p-2'>
-                <p>{pomoCount}</p>
+                <p class="text-align-left">You have completed: <Message /></p>
             </div>
 
 
