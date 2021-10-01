@@ -28,7 +28,7 @@ const Timer = ({ expiryTimestamp }) => {
     const {
         seconds,
         minutes,
-        start,
+        resume,
         pause,
         restart,
         isRunning,
@@ -36,12 +36,12 @@ const Timer = ({ expiryTimestamp }) => {
         expiryTimestamp, onExpire: () => {
             play3()
             //if pomodoro completed 
-            if (state == backgrounds.orange) {
+            if (state === backgrounds.orange) {
                 addPomo()
-                if (sessionStorage.getItem('pomoCount') % 4 == 0) {
+                if (sessionStorage.getItem('pomoCount') % 4 === 0) {
                     setState(backgrounds.blue)
                     changeTime(900)
-                    new Notification("Congrats you've finished a pomodoro! Time for a long break, you've earned it.")
+                    new Notification("Congrats you've finished 4 pomodoros! Time for a long break, you've earned it.")
                 } else {
                     setState(backgrounds.purple)
                     changeTime(300)
@@ -50,7 +50,7 @@ const Timer = ({ expiryTimestamp }) => {
             } else {
                 setState(backgrounds.orange)
                 changeTime(1500)
-                var notification = new Notification("Time to work!");
+                new Notification("Time to work!");
             }
         }
     });
@@ -104,7 +104,7 @@ const Timer = ({ expiryTimestamp }) => {
                             }}>Pause</button>
                             : <button className="btn-lg btn-light" onClick={() => {
                                 requestPermission()
-                                start()
+                                resume()
                                 play()
                             }}>Start</button>
                     }
