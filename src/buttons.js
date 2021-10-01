@@ -9,8 +9,7 @@ const buttons = ({ state, setState, changeTime }) => {
             {/* Buttons to set the times */}
             <button id="pomodoro" className="btn m-1" style={{ backgroundColor: state.button[0] }} onClick={() => {
                 setState(backgrounds.orange)
-                changeTime(1)
-                //should be 1500
+                changeTime(1500)
             }}>Pomodoro</button>
             <button id='short' className="btn m-1" style={{ backgroundColor: state.button[1] }} onClick={() => {
                 setState(backgrounds.purple)
