@@ -48,17 +48,23 @@ app.get('/', (request, response) => {
 })
 
 //testing connectivity 
-app.get('/hello', (request, response) => {
+app.get('/login', (request, response) => {
     console.log('did this recieve anything?')
     response.send({ data: 'hello there!' })
 })
 
-app.post('/hello', (request, response) => {
+
+//login function
+app.post('/login', (request, response) => {
     User.find({ userName: request.body.username }, function (err, result) {
         if (err) { console.log(err) }
         else {
-            console.log(result)
-            response.send({ 'account returned': result })
+            if (result.length == 0) {
+                response.send('no account found')
+            } else {
+                console.log(result)
+                response.send({ 'account': result })
+            }
         }
     })
 })

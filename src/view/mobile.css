@@ -1,0 +1,11 @@
+/* writing a css rule to hide some stuff for when people are on mobile */
+
+@media (max-width: 575.98px) {
+  .label {
+    display: none;
+  }
+}
+
+.height {
+  height: 50px;
+}

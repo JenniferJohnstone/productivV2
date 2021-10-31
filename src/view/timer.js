@@ -13,7 +13,7 @@ import Buttons from './buttons'
 import Heading from './heading'
 import backgrounds from './backgrounds'
 import addPomo from '../controller/addPomo'
-import LoginComponent from './loginComponent';
+import LoginButton from './loginButton'
 
 const Timer = ({ expiryTimestamp }) => {
 
@@ -90,10 +90,11 @@ const Timer = ({ expiryTimestamp }) => {
         <>
 
             <Heading color={state.accent} />
+            <LoginButton state={state} />
 
-            <div className="row text-center mt-1 flex-fill" style={state.background}>
-                <div className="container mt-5">
-                    <LoginComponent state={state} />
+            <div className="row text-center flex-fill" style={state.background}>
+
+                <div className="container mt-1">
 
 
                     <Buttons state={state} setState={setState} changeTime={changeTime} />
