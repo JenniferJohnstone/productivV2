@@ -27,6 +27,7 @@
     "gatsby-plugin-sharp": "^3.6.0",
     "gatsby-source-filesystem": "^3.6.0",
     "gatsby-transformer-sharp": "^3.6.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.13",
     "react": "^17.0.1",
     "react-bootstrap": "^2.0.1",

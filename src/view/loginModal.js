@@ -3,7 +3,7 @@ import { Modal, Button } from 'react-bootstrap'
 
 import LoginComponent from './loginComponent'
 
-const LoginModal = ({ state }) => {
+const LoginModal = ({ state, changeUser }) => {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -11,9 +11,9 @@ const LoginModal = ({ state }) => {
 
     return (
         <>
-            <div class='col d-flex m-1 justify-content-end'>
+            <div class='col d-flex justify-content-end'>
                 <form class='form-group d-flex '>
-                    <button class='btn btn-outline-light m-1 pt-1'
+                    <button class='btn btn-outline-light pt-2 p-3'
                         type="button"
                         style={{ fontWeight: 'bold', color: state.login, backgroundColor: 'white' }}
                         onClick={handleShow}
@@ -28,14 +28,8 @@ const LoginModal = ({ state }) => {
                     <Modal.Title>Login</Modal.Title>
                 </Modal.Header>
                 <Modal.Body >
-                    <LoginComponent state={state} setShow={setShow} />
-
+                    <LoginComponent state={state} setShow={setShow} changeUser={changeUser} />
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
-                </Modal.Footer>
             </Modal>
         </>
     );

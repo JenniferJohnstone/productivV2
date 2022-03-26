@@ -10,12 +10,12 @@ myEnv = myEnv.parsed
 app.use(cors())
 app.use(express.json())
 
-
 const url = 'mongodb+srv://productiv:' + myEnv.SECRET + '@cluster0.arbvm.mongodb.net/Productiv?retryWrites=true&w=majority'
 
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+//connecting to the database 
 
 const userSchema = new mongoose.Schema({
     userName: String,
@@ -25,10 +25,11 @@ const userSchema = new mongoose.Schema({
 })
 
 const User = mongoose.model('user', userSchema)
+//using the schema we defined 
 
-var today = Date.now()
-today = new Date(today)
-today = today.toDateString()
+// var today = Date.now()
+// today = new Date(today)
+// today = today.toDateString()
 
 //registration
 // const user = new User({
@@ -47,14 +48,14 @@ app.get('/', (request, response) => {
     response.send('<h1>Hello World</h1>')
 })
 
-//testing connectivity 
+//testing connectivity, this url doesn't do anything else lol 
 app.get('/login', (request, response) => {
     console.log('did this recieve anything?')
     response.send({ data: 'hello there!' })
 })
 
 
-//login function
+//login function, so far it just checks the username 
 app.post('/login', (request, response) => {
     User.find({ userName: request.body.username }, function (err, result) {
         if (err) { console.log(err) }

@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 import login from '../controller/login'
 
-const LoginComponent = ({ state, setShow }) => {
+const LoginComponent = ({ state, setShow, changeUser }) => {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -20,9 +20,8 @@ const LoginComponent = ({ state, setShow }) => {
                 {failedLogin &&
 
                     <p>login failed</p>
-
                 }
-                <button class='btn text-white btn-md m-2' style={{ backgroundColor: state.button[2] }} type="button" onClick={() => login(username, password, setFail, setShow)}>login</button>
+                <button class='btn text-white btn-md m-2' style={{ backgroundColor: state.button[2] }} type="button" onClick={() => login(username, password, setFail, setShow, changeUser)}>login</button>
                 <div class='m-1'>
                     <p><em>Don't have an account?</em></p>
                     <button class='btn' style={{ fontWeight: 'bold', color: 'white', backgroundColor: state.login }} type="button">Register</button>
