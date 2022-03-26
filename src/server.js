@@ -1,87 +1,79 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
+const mongoose = require('mongoose')
+const dotenv = require('dotenv')
+var myEnv = dotenv.config({ path: '../.env' })
+myEnv = myEnv.parsed
+// was having a few issues using this by require()
 
-let someStuff = [
-    {
-        name: 'stuff',
-        purpose: 'to show the user something'
-    }
-]
+app.use(cors())
+app.use(express.json())
+
+const url = 'mongodb+srv://productiv:' + myEnv.SECRET + '@cluster0.arbvm.mongodb.net/Productiv?retryWrites=true&w=majority'
+
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+//connecting to the database 
+
+const userSchema = new mongoose.Schema({
+    userName: String,
+    lastLogDate: String,
+    password: String,
+    pomodoros: Number
+})
+
+const User = mongoose.model('user', userSchema)
+//using the schema we defined 
+
+// var today = Date.now()
+// today = new Date(today)
+// today = today.toDateString()
+
+//registration
+// const user = new User({
+//     userName: '101',
+//     lastLogDate: today,
+//     password: '101',
+//     pomodoros: 3
+// })
+
+// user.save().then(result => {
+//     console.log('note saved!')
+// })
+
 
 app.get('/', (request, response) => {
     response.send('<h1>Hello World</h1>')
 })
 
-app.get('/hello', (request, response) => {
-    response.send(JSON.stringify(someStuff))
+//testing connectivity, this url doesn't do anything else lol 
+app.get('/login', (request, response) => {
+    console.log('did this recieve anything?')
+    response.send({ data: 'hello there!' })
 })
 
 
+//login function, so far it just checks the username 
+app.post('/login', (request, response) => {
+    User.find({ userName: request.body.username }, function (err, result) {
+        if (err) { console.log(err) }
+        else {
+            if (result.length == 0) {
+                response.send('no account found')
+            } else {
+                console.log(result)
+                response.send({ 'account': result })
+            }
+        }
+    })
+})
+
+// mongoose.connection.close()
 
 
-// const express = require('express')();
-// const app = express
-// const port = process.env.PORT
-// const mongoose = require('mongoose')
-// const dotenv = require('dotenv')
-// var myEnv = dotenv.config({ path: '../.env' })
-// myEnv = myEnv.parsed
-// was having a few issues using this by require()
 
-// const url = 'mongodb+srv://productiv:' + myEnv.SECRET + '@cluster0.arbvm.mongodb.net/Productiv?retryWrites=true&w=majority'
-
-// mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
-
-// const userSchema = new mongoose.Schema({
-//     userName: String,
-//     lastLogDate: Date,
-//     pomodoroWeek: {
-//         Monday: Number,
-//         Tuesday: Number,
-//         Wednesday: Number,
-//         Thursday: Number,
-//         Firday: Number,
-//         Saturday: Number,
-//         Sunday: Number
-//     },
-//     hoursFocused: Number
-// })
-
-// const User = mongoose.model('User', userSchema)
-
-// const user = new User({
-//     userName: 'exampleUser',
-//     lastLogDate: Date.now(),
-//     pomodoroWeek: {
-//         Monday: 0,
-//         Tuesday: 0,
-//         Wednesday: 0,
-//         Thursday: 0,
-//         Firday: 0,
-//         Saturday: 1,
-//         Sunday: 0
-//     },
-//     hoursFocused: 3
-// })
-
-// user.save().then(result => {
-//     console.log('note saved!')
-//     mongoose.connection.close()
-// })
-
-// app.get('/', (req, res) => {
-//     res.send('<h1>Will this restart if I change it?</>')
-// })
-
-// app.get('hello', (req, res) => {
-//     res.send('Hi there')
-// })
-
-// app.listen(port, () => {
-//     console.log(`Example app listening at http://localhost:${myEnv.PORT}`)
-// })
-
-
-const PORT = 3001
+const PORT = process.env.PORT
 app.listen(PORT)
 console.log(`Server running on port ${PORT}`)

@@ -1,11 +1,8 @@
 import React from 'react'
-import Login from './login'
 
 const Stats = () => {
 
     var pomoCount = sessionStorage.getItem('pomoCount')
-    // Login()
-
     const Message = () => {
         if (pomoCount == null) {
             return (

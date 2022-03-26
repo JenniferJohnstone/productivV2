@@ -1,6 +1,7 @@
 import * as React from "react"
-import Timer from '../timer'
+import Timer from '../view/timer'
 import { Helmet } from "react-helmet"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const IndexPage = () => {

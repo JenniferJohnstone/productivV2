@@ -3,21 +3,24 @@ import { useState } from 'react'
 import { useTimer } from 'react-timer-hook';
 import "@fontsource/montserrat"
 import useSound from 'use-sound'
-import buttonClick from './sounds/buttonClick.mp3'
-import buttonClick2 from './sounds/buttonClick2.mp3'
-import finish from './sounds/finishSound.mp3'
+import buttonClick from '../sounds/buttonClick.mp3'
+import buttonClick2 from '../sounds/buttonClick2.mp3'
+import finish from '../sounds/finishSound.mp3'
 
 import DisplayTime from './displayTime'
 import Introduction from './introduction'
 import Buttons from './buttons'
 import Heading from './heading'
 import backgrounds from './backgrounds'
-import addPomo from './addPomo'
+import addPomo from '../controller/addPomo'
+import LoginButton from './loginButton'
 
 const Timer = ({ expiryTimestamp }) => {
 
+
     //used to change color scheme
     const [state, setState] = useState(backgrounds.orange)
+
 
     // sounds
     const [play] = useSound(buttonClick)
@@ -33,7 +36,7 @@ const Timer = ({ expiryTimestamp }) => {
         restart,
         isRunning,
     } = useTimer({
-        expiryTimestamp, onExpire: () => {
+        expiryTimestamp, autoStart: false, onExpire: () => {
             play3()
             //if pomodoro completed 
             if (state === backgrounds.orange) {
@@ -83,15 +86,17 @@ const Timer = ({ expiryTimestamp }) => {
         }
     }
 
-
     return (
 
         <>
 
             <Heading color={state.accent} />
+            <LoginButton state={state} />
 
-            <div className="row text-center mt-1 flex-fill" style={state.background}>
-                <div className="container mt-5">
+            <div className="row text-center flex-fill" style={state.background}>
+
+                <div className="container mt-1">
+
 
                     <Buttons state={state} setState={setState} changeTime={changeTime} />
 
