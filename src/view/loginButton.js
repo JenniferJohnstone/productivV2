@@ -1,37 +1,37 @@
 import React from 'react'
 import { useState } from 'react'
+import "@fontsource/montserrat"
+
 
 import './mobile.css'
 import LoginModal from './loginModal'
 
 const LoginButton = ({ state }) => {
 
-    //state for user 
+    //state for user, gets changed when someone logs in to render this component
     const [userState, changeUser] = useState(null)
-    console.log('this is the value of user', userState)
 
     const [loggedin, setLogin] = useState(false)
 
     const User = () => {
-        console.log('am I running the if else statement? here is the value of user', userState)
         if (userState !== null) {
-            console.log("i am running as if someone were logged in")
             const user = localStorage.getItem('userName')
             return (
                 <>
                     <div class='col text-center'>
-                        <p class='m-1 pt-1' style={{ fontWeight: 'bold', color: 'white', backgroundColor: state.login }}>Logged in as {user}</p>
+                        <p class='pt-1' style={{ fontWeight: 'bold', color: 'white', backgroundColor: state.login, fontFamily: 'monsterrat', marginLeft: '5%' }}>Logged in as {user}</p>
                     </div>
-                    <button onClick={() => {
-                        localStorage.removeItem('userName')
-                        changeUser(null)
-                        setLogin(false)
-                    }
-                    }>Sign out</button>
+                    <button class='btn'
+                        style={{ fontWeight: 'bold', color: state.login, backgroundColor: 'white', margin: '5px' }}
+                        onClick={() => {
+                            localStorage.removeItem('userName')
+                            changeUser(null)
+                            setLogin(false)
+                        }
+                        }>Sign out</button>
                 </>
             )
         } else {
-            console.log('i am running as if there was no user')
             return (
                 <div class='col d-flex m-1'>
                     <p class='label text-white m-2'><em>Register to track pomodoros</em></p>
