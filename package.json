@@ -8,7 +8,7 @@
     "gatsby"
   ],
   "scripts": {
-    "develop": "gatsby develop",
+    "develop": "node test.js",
     "start": "node test.js",
     "build": "gatsby build",
     "serve": "gatsby serve",
