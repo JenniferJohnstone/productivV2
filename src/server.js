@@ -73,7 +73,7 @@ app.post('/login', (request, response) => {
     })
 })
 
-// mongoose.connection.close()
+mongoose.connection.close()
 
 
 
