@@ -44,7 +44,9 @@ const User = mongoose.model('user', userSchema)
 // })
 
 
+
 app.get('/', (request, response) => {
+    console.log('i recieved the request')
     response.send('<h1>Hello World</h1>')
 })
 
@@ -57,6 +59,7 @@ app.get('/login', (request, response) => {
 
 //login function, so far it just checks the username 
 app.post('/login', (request, response) => {
+    console.log("I have recieved the post")
     User.find({ userName: request.body.username }, function (err, result) {
         if (err) { console.log(err) }
         else {
