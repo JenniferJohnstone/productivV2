@@ -16,6 +16,7 @@ app.use(express.json())
 
 
 const url = 'mongodb+srv://productiv:' + 'jenny' + '@cluster0.arbvm.mongodb.net/Productiv?retryWrites=true&w=majority'
+//currently the secret is not hidden due to some issue, will fix later
 
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
 var db = mongoose.connection;
