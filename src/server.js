@@ -9,6 +9,7 @@ myEnv = myEnv.parsed
 
 app.use(cors())
 app.use(express.json())
+app.use(express.static('build'))
 
 const url = 'mongodb+srv://productiv:' + myEnv.SECRET + '@cluster0.arbvm.mongodb.net/Productiv?retryWrites=true&w=majority'
 
