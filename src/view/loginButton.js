@@ -19,7 +19,7 @@ const LoginButton = ({ state }) => {
             return (
                 <>
                     <div class='col text-center'>
-                        <p class='pt-1' style={{ fontWeight: 'bold', color: 'white', backgroundColor: state.login, fontFamily: 'monsterrat', marginLeft: '5%' }}>Logged in as {user}</p>
+                        <p class='pt-1' style={{ fontWeight: 'bold', color: 'white', backgroundColor: state.login, fontFamily: 'montserrat', marginLeft: '5%' }}>Logged in as {user}</p>
                     </div>
                     <button class='btn'
                         style={{ fontWeight: 'bold', color: state.login, backgroundColor: 'white', margin: '5px' }}

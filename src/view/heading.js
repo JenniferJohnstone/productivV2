@@ -6,7 +6,7 @@ const Heading = ({ color }) => {
 
     return (
         <div className="row text-center">
-            <h1 style={{ color: color, fontFamily: 'monsterrat' }} className="display-1">Productiv</h1>
+            <h1 style={{ color: color, fontFamily: 'montserrat' }} className="display-1">Productiv</h1>
 
         </div>
     )
