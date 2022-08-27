@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseURL = 'http://localhost:3000/login'
+const baseURL = '/login'
 
 
 const login = (username, password, setFail, setShow, changeUser) => {
