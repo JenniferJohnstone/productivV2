@@ -40,7 +40,7 @@ const IndexPage = () => {
 
       <main>
 
-        <div className='d-flex flex-column justify-content-center' >
+        <div style={{ height: "100vh" }} className='d-flex flex-column justify-content-center' >
           <Timer expiryTimestamp={time} />
         </div>
       </main>
