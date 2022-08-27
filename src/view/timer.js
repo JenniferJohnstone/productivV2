@@ -93,8 +93,9 @@ const Timer = ({ expiryTimestamp }) => {
             <Heading color={state.accent} />
             <LoginButton state={state} />
             <div className="row text-center flex-fill" style={Object.assign({}, {
-                height: "100vh",
-                alignContent: "baseline"
+                height: "100%",
+                alignContent: "baseline",
+                paddingBottom: "20%"
             }, state.background)}>
 
                 <div className="container mt-1">
