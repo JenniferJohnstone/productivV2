@@ -44,6 +44,7 @@ const User = mongoose.model('user', userSchema)
 // })
 
 
+
 app.get('/', (request, response) => {
     response.send('<h1>Hello World</h1>')
 })
