@@ -91,11 +91,11 @@ const Timer = ({ expiryTimestamp }) => {
         <>
 
             <Heading color={state.accent} />
-            <LoginButton state={state} />
             <div className="row text-center flex-fill" style={Object.assign({}, {
                 height: "100%",
                 alignContent: "baseline",
-                paddingBottom: "20%"
+                paddingBottom: "20%",
+                paddingTop: "3%"
             }, state.background)}>
 
                 <div className="container mt-1">
@@ -106,11 +106,11 @@ const Timer = ({ expiryTimestamp }) => {
                     <DisplayTime minutes={formatTime.min} seconds={formatTime.sec} />
                     {
                         isRunning
-                            ? <button className="btn-lg btn-light" onClick={() => {
+                            ? <button className="btn-lg btn-light" style={{ fontFamily: 'Montserrat' }} onClick={() => {
                                 play2()
                                 pause()
                             }}>Pause</button>
-                            : <button className="btn-lg btn-light" onClick={() => {
+                            : <button className="btn-lg btn-light" style={{ fontFamily: 'Montserrat' }} onClick={() => {
                                 requestPermission()
                                 resume()
                                 play()
