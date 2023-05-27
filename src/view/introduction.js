@@ -44,7 +44,7 @@ const Introduction = ({ accent, state, setState, darkMode, setDarkMode }) => {
 
     return (
         <div className="col-lg-8 row mx-auto mb-3 mt-4 justify-content-center">
-            <ul className="nav border-bottom-0" style={{ backgroundColor: 'none' }}>
+            <ul className="nav" style={{ backgroundColor: 'none', borderBottom: '2px solid', borderColor: 'white' }}>
                 {/* About - automatically open */}
                 <li style={viewStats ? inActive : tabStyle} className={darkMode ? 'tabDarkMode' : 'tab'}>
                     <a style={viewStats ? { color: state.accent } : inActive} className="nav-link" onClick={() => setView(false)}>About</a>
