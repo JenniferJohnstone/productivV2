@@ -14,14 +14,16 @@ const Introduction = ({ accent, state, setState, darkMode, setDarkMode }) => {
     const tabStyle = {
         borderRadius: '10px 10px 0px 0px',
         cursor: 'pointer',
-        color: accent
+        color: accent,
+        fontWeight: 'bold'
     };
 
     // Dark mode button styling
     const highlight = {
         color: accent,
         textShadow: "white 3px 3px 5px, white -3px -3px 5px, white 3px -3px 5px, white -3px 3px 5px",
-        marginLeft: 'auto'
+        marginLeft: 'auto',
+        fontWeight: 'bold'
     };
 
     const inActive = {
@@ -31,12 +33,12 @@ const Introduction = ({ accent, state, setState, darkMode, setDarkMode }) => {
 
     // Changes based on light/dark 
     //if dark mode is false, add the white overlay to buttons 
-    var buttonText = 'Dark Mode'
+    var buttonText = 'Dark mode'
     if (darkMode == false) {
         tabStyle.backgroundColor = 'rgba(249, 249, 249, 0.5)'
     } else {
         highlight.color = 'white'
-        buttonText = "Light Mode"
+        buttonText = "Light mode"
         highlight.textShadow = 'black 1px 1px 0'
     }
 
@@ -44,17 +46,17 @@ const Introduction = ({ accent, state, setState, darkMode, setDarkMode }) => {
         <div className="col-lg-8 row mx-auto mb-3 mt-4 justify-content-center">
             <ul className="nav border-bottom-0" style={{ backgroundColor: 'none' }}>
                 {/* About - automatically open */}
-                <li style={viewStats ? inActive : tabStyle}>
+                <li style={viewStats ? inActive : tabStyle} className={darkMode ? 'tabDarkMode' : 'tab'}>
                     <a style={viewStats ? { color: state.accent } : inActive} className="nav-link" onClick={() => setView(false)}>About</a>
                 </li>
                 {/* My Stats */}
                 <li style={viewStats ? tabStyle : { cursor: 'pointer' }}>
-                    <a style={viewStats ? inActive : { color: state.accent }} className="nav-link" onClick={() => setView(true)}>My Stats</a>
+                    <a style={viewStats ? inActive : { color: state.accent }} className={darkMode ? 'tabDarkMode nav-link' : 'tab nav-link'} onClick={() => setView(true)}>My stats</a>
                 </li>
                 {/* Dark mode button */}
                 {/* I can't believe how much work is involved to simply change the color of the text */}
                 <button
-                    style={isHovered ? highlight : { marginLeft: 'auto', color: state.accent }}
+                    style={isHovered ? highlight : { marginLeft: 'auto', color: state.accent, fontWeight: 'bold' }}
                     onMouseOver={() => setIsHovered(true)}
                     onClick={() => changeColorMode(darkMode, setDarkMode, setState, state.name, false)} // Fixed missing parentheses
                     onMouseOut={() => setIsHovered(false)}
