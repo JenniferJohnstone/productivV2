@@ -4,7 +4,7 @@ import "@fontsource/montserrat"
 const displayTime = ({ minutes, seconds, darkMode, state }) => {
     var styling = {
         fontFamily: 'montserrat',
-        fontSize: '700%',
+        fontSize: '600%',
         fontWeight: '1000',
         color: 'white',
         textShadow: "2px 2px 0 black, -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black"
