@@ -120,7 +120,7 @@ const Timer = ({ expiryTimestamp }) => {
 
                     <Buttons state={state} setState={setState} changeTime={changeTime} darkMode={darkmode} setDarkMode={setDarkMode} />
 
-                    <DisplayTime minutes={formatTime.min} seconds={formatTime.sec} />
+                    <DisplayTime minutes={formatTime.min} seconds={formatTime.sec} darkMode={darkmode} state={state} />
                     {
                         isRunning
                             ? <button className="btn-lg btn-light"
