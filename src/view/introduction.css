@@ -1,0 +1,7 @@
+.darkModeButton{
+    border: none;
+    background-color: transparent;
+    padding-left: 12px;
+    transition: color 1s ease, text-shadow 1s ease; /* Transition for the 'color' property */
+    text-shadow: none;
+}

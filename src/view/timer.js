@@ -13,13 +13,14 @@ import Buttons from './buttons'
 import Heading from './heading'
 import backgrounds from './backgrounds'
 import addPomo from '../controller/addPomo'
-import LoginButton from './loginButton'
+
 
 const Timer = ({ expiryTimestamp }) => {
 
 
     //used to change color scheme
     const [state, setState] = useState(backgrounds.orange)
+    const [darkmode, setDarkMode] = useState(false)
 
 
     // sounds
@@ -86,11 +87,27 @@ const Timer = ({ expiryTimestamp }) => {
         }
     }
 
+    //styling 
+    var buttonStyle = {
+        paddingLeft: '24px',
+        paddingRight: '24px',
+        fontFamily: 'Montserrat',
+        backgroundColor: state.button[1],
+        color: state.accent,
+        fontSize: '20px',
+        borderColor: state.button[1],
+        borderRadius: '25px'
+    }
+
+    if (darkmode == true) {
+        buttonStyle.color = 'black'
+    }
+
     return (
 
         <>
 
-            <Heading color={state.accent} />
+            <Heading color={state.accent} darkMode={darkmode} state={state} />
             <div className="row text-center flex-fill" style={Object.assign({}, {
                 height: "100%",
                 alignContent: "baseline",
@@ -101,16 +118,18 @@ const Timer = ({ expiryTimestamp }) => {
                 <div className="container mt-1">
 
 
-                    <Buttons state={state} setState={setState} changeTime={changeTime} />
+                    <Buttons state={state} setState={setState} changeTime={changeTime} darkMode={darkmode} setDarkMode={setDarkMode} />
 
                     <DisplayTime minutes={formatTime.min} seconds={formatTime.sec} />
                     {
                         isRunning
-                            ? <button className="btn-lg btn-light" style={{ fontFamily: 'Montserrat' }} onClick={() => {
-                                play2()
-                                pause()
-                            }}>Pause</button>
-                            : <button className="btn-lg btn-light" style={{ fontFamily: 'Montserrat' }} onClick={() => {
+                            ? <button className="btn-lg btn-light"
+                                style={buttonStyle}
+                                onClick={() => {
+                                    play2()
+                                    pause()
+                                }}>Pause</button>
+                            : <button className="btn-lg btn-light" style={buttonStyle} onClick={() => {
                                 requestPermission()
                                 resume()
                                 play()
@@ -118,7 +137,7 @@ const Timer = ({ expiryTimestamp }) => {
                     }
 
                 </div>
-                <Introduction accent={state.accent} />
+                <Introduction accent={state.accent} state={state} setState={setState} darkMode={darkmode} setDarkMode={setDarkMode} />
             </div>
 
 
