@@ -111,7 +111,7 @@ const Timer = ({ expiryTimestamp }) => {
             <div className="row text-center flex-fill" style={Object.assign({}, {
                 height: "100%",
                 alignContent: "baseline",
-                paddingBottom: "20%",
+                paddingBottom: "10%",
                 paddingTop: "3%"
             }, state.background)}>
 
