@@ -66,6 +66,8 @@ const Timer = ({ expiryTimestamp }) => {
         time.setSeconds(time.getSeconds() + value);
         restart(time)
         pause()
+        document.title = `${formatTime.min} : ${formatTime.sec}`;
+
     }
 
     //formats the time into 00:00
@@ -104,7 +106,6 @@ const Timer = ({ expiryTimestamp }) => {
         buttonStyle.color = 'black'
     }
 
-    document.title = `${formatTime.min} : ${formatTime.sec}`;
 
     return (
 
