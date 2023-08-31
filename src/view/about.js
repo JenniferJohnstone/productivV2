@@ -32,6 +32,7 @@ const about = ({ accent }) => {
                     <li>After 4 intervals of work, take a long break    </li>
                 </ol>
             </div>
+            <p style={{ fontSize: '10px' }}><a href="https://icons8.com/icon/21529/timer">Timer</a> icon by <a href="https://icons8.com">Icons8</a></p>
         </>
     )
 
