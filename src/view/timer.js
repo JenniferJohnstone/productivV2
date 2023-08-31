@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useState } from 'react'
 import { useTimer } from 'react-timer-hook';
+import { useEffect } from 'react';
 import "@fontsource/montserrat"
 import useSound from 'use-sound'
 import buttonClick from '../sounds/buttonClick.mp3'
@@ -66,8 +67,6 @@ const Timer = ({ expiryTimestamp }) => {
         time.setSeconds(time.getSeconds() + value);
         restart(time)
         pause()
-        document.title = `${formatTime.min} : ${formatTime.sec}`;
-
     }
 
     //formats the time into 00:00
@@ -82,6 +81,11 @@ const Timer = ({ expiryTimestamp }) => {
             useGrouping: false
         })
     }
+
+    useEffect(() => {
+        // Update the tab title when formatTime.min and formatTime.sec change
+        document.title = `${formatTime.min} : ${formatTime.sec}`;
+    }, [formatTime.min, formatTime.sec]);
 
     //request notification permission
     function requestPermission() {

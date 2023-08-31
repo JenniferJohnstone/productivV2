@@ -1,7 +1,9 @@
 import React from 'react'
+import { useEffect } from 'react';
 import "@fontsource/montserrat"
 
 const displayTime = ({ minutes, seconds, darkMode, state }) => {
+
     var styling = {
         fontFamily: 'montserrat',
         fontSize: '600%',
