@@ -13,7 +13,6 @@ const Heading = ({ color, darkMode, state }) => {
     }
 
     if (darkMode == true) {
-        console.log('this is state', state)
         styling.background = state.background.background
     }
 

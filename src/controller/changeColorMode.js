@@ -1,7 +1,7 @@
 import backgrounds from "../view/backgrounds";
 import darkbackgrounds from "../view/darkbackgrounds";
 
-// this function takes in whether dark mode is turned on and the function to change the color state along with what colour it current is. 
+// this function takes in whether dark mode is turned on and the function to change the color state along with what colour it currently is. 
 // it then sets the color accordingly.
 
 function changeColorMode(darkMode, setDarkMode, setState, color, maintain) {

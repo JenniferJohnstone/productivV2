@@ -13,10 +13,11 @@ import Buttons from './buttons'
 import Heading from './heading'
 import backgrounds from './backgrounds'
 import addPomo from '../controller/addPomo'
+import changeColorMode from '../controller/changeColorMode';
+import darkModeColors from './darkbackgrounds';
 
 
 const Timer = ({ expiryTimestamp }) => {
-
 
     //used to change color scheme
     const [state, setState] = useState(backgrounds.orange)
@@ -40,19 +41,19 @@ const Timer = ({ expiryTimestamp }) => {
         expiryTimestamp, autoStart: false, onExpire: () => {
             play3()
             //if pomodoro completed 
-            if (state === backgrounds.orange) {
+            if (state === backgrounds.orange || state === darkModeColors.orange) {
                 addPomo()
                 if (sessionStorage.getItem('pomoCount') % 4 === 0) {
-                    setState(backgrounds.blue)
+                    changeColorMode(darkmode, setDarkMode, setState, 'blue', true)
                     changeTime(900)
                     new Notification("Congrats you've finished 4 pomodoros! Time for a long break, you've earned it.")
                 } else {
-                    setState(backgrounds.purple)
+                    changeColorMode(darkmode, setDarkMode, setState, 'purple', true)
                     changeTime(300)
                     new Notification("Time to take a break!")
                 }
             } else {
-                setState(backgrounds.orange)
+                changeColorMode(darkmode, setDarkMode, setState, 'orange', true)
                 changeTime(1500)
                 new Notification("Time to work!");
             }
@@ -103,6 +104,8 @@ const Timer = ({ expiryTimestamp }) => {
         buttonStyle.color = 'black'
     }
 
+    document.title = `${formatTime.min} : ${formatTime.sec}`;
+
     return (
 
         <>
@@ -112,7 +115,8 @@ const Timer = ({ expiryTimestamp }) => {
                 height: "100%",
                 alignContent: "baseline",
                 paddingBottom: "10%",
-                paddingTop: "3%"
+                paddingTop: "3%",
+                minHeight: "100vh"
             }, state.background)}>
 
                 <div className="container mt-1">

@@ -43,7 +43,7 @@ const Introduction = ({ accent, state, setState, darkMode, setDarkMode }) => {
     }
 
     return (
-        <div className="col-lg-8 row mx-auto mb-3 mt-4 justify-content-center">
+        <div className="col-lg-8 row mx-auto mb-3 mt-4 justify-content-center" style={{ maxWidth: '1000px' }}>
             <ul className="nav" style={{ backgroundColor: 'none', borderBottom: '2px solid', borderColor: 'white' }}>
                 {/* About - automatically open */}
                 <li style={viewStats ? inActive : tabStyle} className={darkMode ? 'tabDarkMode' : 'tab'}>

@@ -11,9 +11,8 @@ export default function HTML(props) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-
         {props.headComponents}
-
+        <link rel="icon" href="https://img.icons8.com/?size=512&id=21529&format=png" type="image/png" />
       </head>
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}

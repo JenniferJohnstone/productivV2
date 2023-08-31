@@ -15,7 +15,7 @@ const about = ({ accent }) => {
 
     return (
         <>
-            < div className="pt-4 p-3 mx-auto">
+            < div className="pt-4 p-3 mx-auto" style={{ maxWidth: "750px" }}>
                 <h3 style={higlight}>What is Productiv?</h3>
                 <p style={fontStyling}>Productiv is an online <a style={{ textDecoration: 'none', fontWeight: '800' }} href="https://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank"><span style={higlight}> pomodoro timer </span> </a>
                     that helps you stay focused for longer.</p>
