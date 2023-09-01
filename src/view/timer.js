@@ -3,11 +3,12 @@ import { useState } from 'react'
 import { useTimer } from 'react-timer-hook';
 import { useEffect } from 'react';
 import "@fontsource/montserrat"
+// sounds 
 import useSound from 'use-sound'
 import buttonClick from '../sounds/buttonClick.mp3'
 import buttonClick2 from '../sounds/buttonClick2.mp3'
 import finish from '../sounds/finishSound.mp3'
-
+// components and functions 
 import DisplayTime from './displayTime'
 import Introduction from './introduction'
 import Buttons from './buttons'
@@ -16,6 +17,11 @@ import backgrounds from './backgrounds'
 import addPomo from '../controller/addPomo'
 import changeColorMode from '../controller/changeColorMode';
 import darkModeColors from './darkbackgrounds';
+import { formatTime } from '../controller/changeTime';
+import { setColors } from '../controller/setColours';
+// styling
+import './Styling/mainStyling.css';
+
 
 
 const Timer = ({ expiryTimestamp }) => {
@@ -44,17 +50,18 @@ const Timer = ({ expiryTimestamp }) => {
             //if pomodoro completed 
             if (state === backgrounds.orange || state === darkModeColors.orange) {
                 addPomo()
+                //If they've completed 4 pomodoros they'll take a long break 
                 if (sessionStorage.getItem('pomoCount') % 4 === 0) {
-                    changeColorMode(darkmode, setDarkMode, setState, 'blue', true)
+                    changeColorMode(state, darkmode, setDarkMode, setState, 'blue', true)
                     changeTime(900)
                     new Notification("Congrats you've finished 4 pomodoros! Time for a long break, you've earned it.")
                 } else {
-                    changeColorMode(darkmode, setDarkMode, setState, 'purple', true)
+                    changeColorMode(state, darkmode, setDarkMode, setState, 'purple', true)
                     changeTime(300)
                     new Notification("Time to take a break!")
                 }
             } else {
-                changeColorMode(darkmode, setDarkMode, setState, 'orange', true)
+                changeColorMode(state, darkmode, setDarkMode, setState, 'orange', true)
                 changeTime(1500)
                 new Notification("Time to work!");
             }
@@ -70,22 +77,12 @@ const Timer = ({ expiryTimestamp }) => {
     }
 
     //formats the time into 00:00
-
-    const formatTime = {
-        min: minutes.toLocaleString('en-US', {
-            minimumIntegerDigits: 2,
-            useGrouping: false
-        }),
-        sec: seconds.toLocaleString('en-US', {
-            minimumIntegerDigits: 2,
-            useGrouping: false
-        })
-    }
+    const time = formatTime(minutes, seconds);
 
     useEffect(() => {
-        // Update the tab title when formatTime.min and formatTime.sec change
-        document.title = `${formatTime.min} : ${formatTime.sec}`;
-    }, [formatTime.min, formatTime.sec]);
+        // Update the tab title when time.min and time.sec change
+        document.title = `${time.min} : ${time.sec}`;
+    }, [time.min, time.sec]);
 
     //request notification permission
     function requestPermission() {
@@ -94,51 +91,25 @@ const Timer = ({ expiryTimestamp }) => {
         }
     }
 
-    //styling 
-    var buttonStyle = {
-        paddingLeft: '24px',
-        paddingRight: '24px',
-        fontFamily: 'Montserrat',
-        backgroundColor: state.button[1],
-        color: state.accent,
-        fontSize: '20px',
-        borderColor: state.button[1],
-        borderRadius: '25px'
-    }
-
-    if (darkmode == true) {
-        buttonStyle.color = 'black'
-    }
-
+    // Set colour css variables
+    setColors(state, darkmode)
 
     return (
 
         <>
-
-            <Heading color={state.accent} darkMode={darkmode} state={state} />
-            <div className="row text-center flex-fill" style={Object.assign({}, {
-                height: "100%",
-                alignContent: "baseline",
-                paddingBottom: "10%",
-                paddingTop: "3%",
-                minHeight: "100vh"
-            }, state.background)}>
-
+            <Heading />
+            <div className="row text-center flex-fill backgroundContainer">
                 <div className="container mt-1">
-
-
                     <Buttons state={state} setState={setState} changeTime={changeTime} darkMode={darkmode} setDarkMode={setDarkMode} />
-
-                    <DisplayTime minutes={formatTime.min} seconds={formatTime.sec} darkMode={darkmode} state={state} />
+                    <DisplayTime minutes={time.min} seconds={time.sec} darkMode={darkmode} state={state} />
                     {
                         isRunning
-                            ? <button className="btn-lg btn-light"
-                                style={buttonStyle}
+                            ? <button className="buttonStyle"
                                 onClick={() => {
                                     play2()
                                     pause()
                                 }}>Pause</button>
-                            : <button className="btn-lg btn-light" style={buttonStyle} onClick={() => {
+                            : <button className="buttonStyle" onClick={() => {
                                 requestPermission()
                                 resume()
                                 play()

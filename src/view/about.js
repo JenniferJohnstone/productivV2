@@ -10,7 +10,8 @@ const about = ({ accent }) => {
 
     const higlight = {
         color: accent,
-        fontFamily: 'montserrat'
+        fontFamily: 'montserrat',
+        fontWeight: 'bold'
     }
 
     return (

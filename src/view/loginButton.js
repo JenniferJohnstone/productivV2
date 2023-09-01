@@ -3,7 +3,7 @@ import { useState } from 'react'
 import "@fontsource/montserrat"
 
 
-import './mobile.css'
+import './Styling/mobile.css'
 import LoginModal from './loginModal'
 
 const LoginButton = ({ state }) => {

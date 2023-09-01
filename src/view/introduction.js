@@ -1,6 +1,6 @@
 import Stats from './stats';
 import About from './about';
-import './introduction.css';
+import './Styling/mainStyling.css';
 import changeColorMode from '../controller/changeColorMode';
 
 import React, { useState } from 'react';
@@ -58,7 +58,7 @@ const Introduction = ({ accent, state, setState, darkMode, setDarkMode }) => {
                 <button
                     style={isHovered ? highlight : { marginLeft: 'auto', color: state.accent, fontWeight: 'bold' }}
                     onMouseOver={() => setIsHovered(true)}
-                    onClick={() => changeColorMode(darkMode, setDarkMode, setState, state.name, false)} // Fixed missing parentheses
+                    onClick={() => changeColorMode(state, darkMode, setDarkMode, setState, state.name, false)} // Fixed missing parentheses
                     onMouseOut={() => setIsHovered(false)}
                     className="nav-link darkModeButton" // Fixed duplicate class attribute
                 >{buttonText}</button>
