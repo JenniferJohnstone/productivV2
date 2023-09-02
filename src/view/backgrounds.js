@@ -10,10 +10,10 @@ const backgrounds = {
 
     purple: {
         name: 'purple',
-        background: { background1: 'rgb(183, 225, 255)', background: 'linear-gradient(180deg, rgb(183, 225, 255) 0%, rgb(183, 189, 255) 100%)' },
+        background: { background1: 'rgb(178, 166, 255)', background: 'linear-gradient(180deg, rgb(183, 225, 255) 0%, rgb(133, 115, 255) 100%)' },
         button: ['#caefff', '#b1cafc', '#9cadfc'],
         accent: '#0400D6',
-        login: 'rgb(183, 225, 255)',
+        login: 'rgb(178, 166, 255)',
         timer: '#4400A3'
     },
 

@@ -14,10 +14,8 @@ export function setColors(state, darkmode) {
         document.documentElement.style.setProperty('--heading-color', darkmode ? 'white' : state.accent)
         // set the background colour
         document.documentElement.style.setProperty('--background-color', state.background.background1);
-
         // set the timer display color 
         document.documentElement.style.setProperty('--state-timer', darkmode ? 'white' : state.timer)
-
         // set the login color 
         document.documentElement.style.setProperty('--state-login', darkmode ? state.background.background1 : state.login)
     }

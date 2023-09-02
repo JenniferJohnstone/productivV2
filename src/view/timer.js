@@ -8,6 +8,7 @@ import useSound from 'use-sound'
 import buttonClick from '../sounds/buttonClick.mp3'
 import buttonClick2 from '../sounds/buttonClick2.mp3'
 import finish from '../sounds/finishSound.mp3'
+import breakEnd from '../sounds/bubblespopping.mp3'
 // components and functions 
 import DisplayTime from './displayTime'
 import Introduction from './introduction'
@@ -35,6 +36,7 @@ const Timer = ({ expiryTimestamp }) => {
     const [play] = useSound(buttonClick)
     const [play2] = useSound(buttonClick2)
     const [play3] = useSound(finish)
+    const [play4] = useSound(breakEnd)
 
     //the timer functions
     const {
@@ -46,21 +48,22 @@ const Timer = ({ expiryTimestamp }) => {
         isRunning,
     } = useTimer({
         expiryTimestamp, autoStart: false, onExpire: () => {
-            play3()
-            //if pomodoro completed 
             if (state === backgrounds.orange || state === darkModeColors.orange) {
                 addPomo()
                 //If they've completed 4 pomodoros they'll take a long break 
                 if (sessionStorage.getItem('pomoCount') % 4 === 0) {
+                    play3();
                     changeColorMode(state, darkmode, setDarkMode, setState, 'blue', true)
                     changeTime(900)
                     new Notification("Congrats you've finished 4 pomodoros! Time for a long break, you've earned it.")
                 } else {
+                    play3();
                     changeColorMode(state, darkmode, setDarkMode, setState, 'purple', true)
                     changeTime(300)
                     new Notification("Time to take a break!")
                 }
             } else {
+                play4()
                 changeColorMode(state, darkmode, setDarkMode, setState, 'orange', true)
                 changeTime(1500)
                 new Notification("Time to work!");
