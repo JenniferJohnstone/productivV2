@@ -1,9 +1,8 @@
 /* Note that the styling rules are in order of appearance and are using variables for the colour states*/
 
 :root {
-  --your-variable-name: #b5fbff;
+  --background-color: #b5fbff;
 }
-
 
 /* timer.js */
 .buttonStyle {
