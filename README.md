@@ -1,54 +1,38 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal starter
-</h1>
+# Productiv
 
-## 🚀 Quick start
+Productiv is a web application designed to boost your productivity using the Pomodoro Technique. It features a user-friendly color UI and a timer with convenient buttons to set work and break durations.
 
-1.  **Create a Gatsby site.**
+## Features
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+- **Pomodoro Timer:** Choose from 25, 5, or 15-minute work intervals, and Productiv will automatically switch between them, optimizing your workflow.
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+- **Start and Stop:** Easily pause and resume the timer as needed, allowing you to stay in control of your work sessions.
 
-2.  **Start developing.**
+- **Notifications:** Get notified when a Pomodoro or break session is complete, and enjoy delightful chime sounds for added motivation.
 
-    Navigate into your new site’s directory and start it up.
+- **Dark Mode:** Toggle between light and dark modes to customize your workspace and reduce eye strain during late-night work sessions.
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+- **Session Tracking:** Keep track of your progress with a dedicated tab that displays the number of Pomodoros you've completed during a session.
 
-3.  **Open the code and start customizing!**
+## What is the Pomodoro Technique?
 
-    Your site is now running at http://localhost:8000!
+The Pomodoro Technique is a time management method that breaks work into intervals (traditionally 25 minutes) separated by short breaks. It's proven to increase productivity by maintaining focus and preventing burnout.
 
-    Edit `src/pages/index.js` to see your site update in real-time!
+## How to Use Productiv
 
-4.  **Learn more**
+1. Choose your work duration (25, 5, or 15 minutes).
+2. Click "Start" to begin your Pomodoro session.
+3. Take a short break when the timer rings.
+4. Productiv will automatically switch between work and break sessions.
+5. Track your progress in the session tab.
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+## Future Enhancements
 
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+We have exciting plans for Productiv's future, including:
 
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+- **Task Time Tracking:** Monitor the time spent on specific tasks for better productivity insights.
+- **Ambient Sounds:** Enhance your work environment with soothing background sounds like rain, rainforest, and more.
 
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+Stay tuned for updates as we continue to improve Productiv!
 
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-## 🚀 Quick start (Gatsby Cloud)
-
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
-
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal)
+Ready to boost your productivity? Try Productiv now and experience the benefits of the Pomodoro Technique.

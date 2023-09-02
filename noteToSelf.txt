@@ -1,2 +1,0 @@
-To run the gatsby command (running as gatsby normally would) it's "gatsby develop" so 
-npm run develop (if it's still there as a script)
